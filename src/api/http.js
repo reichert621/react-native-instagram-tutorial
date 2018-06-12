@@ -1,5 +1,6 @@
 import { assign } from 'lodash';
 
+// TODO: support non-localhost API
 export const BASE_URL = 'http://localhost:3000';
 export const GET = 'GET';
 export const POST = 'POST';
@@ -45,9 +46,6 @@ const request = (endpoint, config) => {
     .then(validate);
 };
 
-/**
- * Make an HTTP GET request
- */
 export const get = endpoint => {
   const url = BASE_URL + endpoint;
   const config = getHttpConfig();
@@ -55,9 +53,6 @@ export const get = endpoint => {
   return request(url, config);
 };
 
-/**
- * Make an HTTP POST request
- */
 export const post = (endpoint, body = {}) => {
   const url = BASE_URL + endpoint;
   const config = getHttpConfig({
@@ -68,9 +63,6 @@ export const post = (endpoint, body = {}) => {
   return request(url, config);
 };
 
-/**
- * Make an HTTP PUT request
- */
 export const put = (endpoint, body) => {
   const url = BASE_URL + endpoint;
   const config = getHttpConfig({
@@ -81,9 +73,6 @@ export const put = (endpoint, body) => {
   return request(url, config);
 };
 
-/**
- * Make an HTTP DELETE request
- */
 export const del = endpoint => {
   const url = BASE_URL + endpoint;
   const config = getHttpConfig({
